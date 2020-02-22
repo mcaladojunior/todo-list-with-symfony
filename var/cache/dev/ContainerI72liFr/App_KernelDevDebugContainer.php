@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerAPUIAsJ;
+namespace ContainerI72liFr;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -282,7 +282,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'/vendor/symfony/cache/Marshaller/MarshallerInterface.php';
         include_once \dirname(__DIR__, 4).'/vendor/symfony/cache/Marshaller/DefaultMarshaller.php';
 
-        $this->services['cache.app'] = $instance = new \Symfony\Component\Cache\Adapter\FilesystemAdapter('aqN3InANu1', 0, ($this->targetDir.''.'/pools'), new \Symfony\Component\Cache\Marshaller\DefaultMarshaller(NULL));
+        $this->services['cache.app'] = $instance = new \Symfony\Component\Cache\Adapter\FilesystemAdapter('yUtpn16Ff6', 0, ($this->targetDir.''.'/pools'), new \Symfony\Component\Cache\Marshaller\DefaultMarshaller(NULL));
 
         $instance->setLogger(($this->privates['logger'] ?? ($this->privates['logger'] = new \Symfony\Component\HttpKernel\Log\Logger())));
 
@@ -340,7 +340,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'/vendor/symfony/cache/Traits/ContractsTrait.php';
         include_once \dirname(__DIR__, 4).'/vendor/symfony/cache/Adapter/AbstractAdapter.php';
 
-        return $this->services['cache.system'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('FplKveb610', 0, $this->getParameter('container.build_id'), ($this->targetDir.''.'/pools'), ($this->privates['logger'] ?? ($this->privates['logger'] = new \Symfony\Component\HttpKernel\Log\Logger())));
+        return $this->services['cache.system'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('EyFiMpA+F4', 0, $this->getParameter('container.build_id'), ($this->targetDir.''.'/pools'), ($this->privates['logger'] ?? ($this->privates['logger'] = new \Symfony\Component\HttpKernel\Log\Logger())));
     }
 
     /**
@@ -702,7 +702,11 @@ class App_KernelDevDebugContainer extends Container
         $a->setNamingStrategy(new \Doctrine\ORM\Mapping\UnderscoreNamingStrategy(0, true));
         $a->setQuoteStrategy(new \Doctrine\ORM\Mapping\DefaultQuoteStrategy());
         $a->setEntityListenerResolver(new \Doctrine\Bundle\DoctrineBundle\Mapping\ContainerEntityListenerResolver($this));
-        $a->setRepositoryFactory(new \Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory(($this->privates['.service_locator.I3K77mT'] ?? ($this->privates['.service_locator.I3K77mT'] = new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [], [])))));
+        $a->setRepositoryFactory(new \Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory(new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [
+            'App\\Repository\\ThingRepository' => ['privates', 'App\\Repository\\ThingRepository', 'getThingRepositoryService', false],
+        ], [
+            'App\\Repository\\ThingRepository' => '?',
+        ])));
 
         $this->services['doctrine.orm.default_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create(($this->services['doctrine.dbal.default_connection'] ?? $this->getDoctrine_Dbal_DefaultConnectionService()), $a);
 
@@ -786,6 +790,9 @@ class App_KernelDevDebugContainer extends Container
             return ($this->privates['session_listener'] ?? $this->getSessionListenerService());
         }, 1 => 'onFinishRequest'], 0);
         $instance->addListener('kernel.request', [0 => function () {
+            return ($this->privates['debug.debug_handlers_listener'] ?? $this->getDebug_DebugHandlersListenerService());
+        }, 1 => 'configure'], 2048);
+        $instance->addListener('console.command', [0 => function () {
             return ($this->privates['debug.debug_handlers_listener'] ?? $this->getDebug_DebugHandlersListenerService());
         }, 1 => 'configure'], 2048);
         $instance->addListener('kernel.request', [0 => function () {
@@ -1150,6 +1157,23 @@ class App_KernelDevDebugContainer extends Container
     }
 
     /**
+     * Gets the private 'App\Repository\ThingRepository' shared autowired service.
+     *
+     * @return \App\Repository\ThingRepository
+     */
+    protected function getThingRepositoryService()
+    {
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/persistence/lib/Doctrine/Persistence/ObjectRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/orm/lib/Doctrine/ORM/EntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepositoryInterface.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/src/Repository/ThingRepository.php';
+
+        return $this->privates['App\\Repository\\ThingRepository'] = new \App\Repository\ThingRepository(($this->services['doctrine'] ?? $this->getDoctrineService()));
+    }
+
+    /**
      * Gets the private 'annotations.cache' shared service.
      *
      * @return \Symfony\Component\Cache\DoctrineProvider
@@ -1237,7 +1261,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'/vendor/symfony/cache/Traits/ContractsTrait.php';
         include_once \dirname(__DIR__, 4).'/vendor/symfony/cache/Adapter/AbstractAdapter.php';
 
-        return $this->privates['cache.annotations'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('DaSegQqWBA', 0, $this->getParameter('container.build_id'), ($this->targetDir.''.'/pools'), ($this->privates['logger'] ?? ($this->privates['logger'] = new \Symfony\Component\HttpKernel\Log\Logger())));
+        return $this->privates['cache.annotations'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('lRdu+v0+ae', 0, $this->getParameter('container.build_id'), ($this->targetDir.''.'/pools'), ($this->privates['logger'] ?? ($this->privates['logger'] = new \Symfony\Component\HttpKernel\Log\Logger())));
     }
 
     /**

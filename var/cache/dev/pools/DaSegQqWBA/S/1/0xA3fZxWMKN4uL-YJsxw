@@ -1,4 +1,4 @@
-<?php //%255BApp%255CController%255CThingController%2523index%255D%255B1%255D
+<?php //%255BApp%255CController%255CThingController%2523store%255D%255B1%255D
 
 return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
@@ -11,11 +11,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 '/things',
             ],
             'name' => [
-                'things-index',
+                'things-store',
             ],
             'methods' => [
                 [
-                    'GET',
+                    'POST',
                 ],
             ],
         ],

@@ -9,6 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Thing
 {
+    public function __construct($name = NULL, $description = NULL)
+    {
+        $this->name = $name;
+        $this->description = $description;
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

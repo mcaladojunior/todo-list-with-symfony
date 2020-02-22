@@ -9,7 +9,11 @@ return [
     false, // $matchHost
     [ // $staticRoutes
         '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'], null, ['GET' => 0], null, false, false, null]],
-        '/things' => [[['_route' => 'things-index', '_controller' => 'App\\Controller\\ThingController::index'], null, null, null, false, false, null]],
+        '/things' => [
+            [['_route' => 'things-index', '_controller' => 'App\\Controller\\ThingController::index'], null, ['GET' => 0], null, false, false, null],
+            [['_route' => 'things-store', '_controller' => 'App\\Controller\\ThingController::store'], null, ['POST' => 0], null, false, false, null],
+        ],
+        '/things/create' => [[['_route' => 'things-create', '_controller' => 'App\\Controller\\ThingController::create'], null, ['GET' => 0], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
