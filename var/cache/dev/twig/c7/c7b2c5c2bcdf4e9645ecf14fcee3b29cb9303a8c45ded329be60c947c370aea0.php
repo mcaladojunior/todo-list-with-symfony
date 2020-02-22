@@ -70,7 +70,7 @@ class __TwigTemplate_15047b834d0bd6ed4a940320cda087cfbf6446a88655c90b0d0bd71328d
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "    <section>
+        echo "    <section class=\"py-2\">
         <div class=\"container\">
             <div class=\"row justify-content-center\">
                 <div class=\"col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10\">
@@ -113,7 +113,7 @@ class __TwigTemplate_15047b834d0bd6ed4a940320cda087cfbf6446a88655c90b0d0bd71328d
 {% block title %}Home | TO-DO LIST{% endblock %}
 
 {% block body %}
-    <section>
+    <section class=\"py-2\">
         <div class=\"container\">
             <div class=\"row justify-content-center\">
                 <div class=\"col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10\">

@@ -52,9 +52,9 @@ class ThingController extends AbstractController
     }
 
     /**
-     * @Route("/things/edit", name="things-edit", methods={"GET"})
+     * @Route("/things/edit/{id}", name="things-edit", methods={"GET"})
      */
-    public function edit(): Response
+    public function edit(Request $request): Response
     {
         return $this->render('things/edit.html.twig');
     }
